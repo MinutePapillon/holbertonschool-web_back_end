@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Module for to_kv function"""
-from typing import Union, Tuple
+"""
+Type-annotated function make_multiplier
+"""
+from typing import Callable
 
 
-def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
-    """a type-annotated function that takes a string k
-    and an int OR float v as arguments and returns a tuple."""
-    return (k, v**2)
+def make_multiplier(multiplier: float) -> Callable[[float], float]:
+    """Return a function that multiplies a float by multiplier"""
+    def multiply(value: float) -> float:
+        return value * multiplier
+    return multiply
